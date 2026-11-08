@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Pitch Accelerator | Live Demo</title>
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: #111827;
+      --accent-red: #ef4444;
+      --accent-hover: #dc2626;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-color: #1f2937;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; padding: 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+    .logo { font-size: 1.25rem; font-weight: 700; color: var(--accent-red); display: flex; align-items: center; gap: 0.5rem; }
+    .badge { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(239, 68, 68, 0.2); }
+    
+    .hero { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 3rem 2rem; text-align: center; margin-bottom: 2rem; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main); }
+    .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    
+    .client-badge { display: inline-block; background: #1f2937; color: #f3f4f6; padding: 0.5rem 1.25rem; border-radius: 8px; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid #374151; }
+    
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .metric-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem; text-align: left; transition: transform 0.2s, border-color 0.2s; }
+    .metric-card:hover { border-color: var(--accent-red); transform: translateY(-2px); }
+    .metric-value { font-size: 2rem; font-weight: 800; color: var(--accent-red); margin-bottom: 0.5rem; }
+    .metric-label { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .metric-detail { font-size: 0.9rem; color: var(--text-muted); }
+
+    .testimonial-box { background: var(--card-bg); border-left: 4px solid var(--accent-red); border: 1px solid var(--border-color); border-left-width: 4px; border-radius: 8px; padding: 1.5rem; margin-bottom: 2.5rem; font-style: italic; color: #d1d5db; }
+    .testimonial-author { margin-top: 0.5rem; font-style: normal; font-weight: 600; font-size: 0.9rem; color: var(--text-muted); }
+
+    .controls { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; }
+    .controls h3 { margin-bottom: 1rem; font-size: 1.2rem; }
+    .form-group { margin-bottom: 1rem; text-align: left; }
+    .form-group label { display: block; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+    .form-group input { width: 100%; padding: 0.75rem; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-main); font-size: 1rem; }
+    .form-group input:focus { outline: none; border-color: var(--accent-red); }
+    button { background: var(--accent-red); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    button:hover { background: var(--accent-hover); }
+
+    footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <span>⚡</span> SalesPitch Accelerator
+      </div>
+      <div class="badge" id="headerBadge">Live Client Pitch Mode</div>
+    </header>
+
+    <div class="hero">
+      <div class="client-badge" id="clientBadge">Prepared for: Acme Corporation</div>
+      <h1 id="solutionTitle">AI-Powered Enterprise Automation</h1>
+      <p>Instant value demonstration & rapid deployment framework</p>
+    </div>
+
+    <div class="metrics-grid" id="metricsGrid">
+      <!-- Populated dynamically -->
+    </div>
+
+    <div class="testimonial-box">
+      <div id="testimonialQuote">"This is the fastest proof-of-concept delivery we have ever witnessed in our enterprise sales cycle."</div>
+      <div class="testimonial-author" id="testimonialAuthor">— Chief Technology Officer, Global Financial Services</div>
+    </div>
+
+    <div class="controls">
+      <h3>Customize for Live Pitch</h3>
+      <div class="form-group">
+        <label for="inputClient">Target Client Name</label>
+        <input type="text" id="inputClient" placeholder="e.g. Acme Corporation">
+      </div>
+      <div class="form-group">
+        <label for="inputTitle">Solution Title</label>
+        <input type="text" id="inputTitle" placeholder="e.g. Autonomous Cloud Architecture">
+      </div>
+      <button onclick="updatePitch()">Update Pitch Live</button>
+    </div>
+
+    <footer>
+      Powered by Hermes Agent &bull; Instant Deployment Architecture
+    </footer>
+  </div>
+
+  <script>
+    async function loadConfig() {
+      const res = await fetch('/api/config');
+      const data = await res.json();
+      document.getElementById('clientBadge').innerText = `Prepared for: ${data.clientName}`;
+      document.getElementById('solutionTitle').innerText = data.solutionTitle;
+      document.getElementById('inputClient').value = data.clientName;
+      document.getElementById('inputTitle').value = data.solutionTitle;
+
+      const grid = document.getElementById('metricsGrid');
+      grid.innerHTML = data.metrics.map(m => `
+        <div class="metric-card">
+          <div class="metric-value">${m.value}</div>
+          <div class="metric-label">${m.label}</div>
+          <div class="metric-detail">${m.detail}</div>
+        </div>
+      `).join('');
+    }
+
+    async function updatePitch() {
+      const clientName = document.getElementById('inputClient').value;
+      const solutionTitle = document.getElementById('inputTitle').value;
+      const res = await fetch('/api/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clientName, solutionTitle })
+      });
+      const data = await res.json();
+      if(data.success) {
+        loadConfig();
+      }
+    }
+
+    loadConfig();
+  </script>
+
+    <!-- Staging Feedback & Chat Banner -->
+    <div id="stagingFeedbackBanner" style="position: fixed; bottom: 20px; right: 20px; background: #ef4444; color: white; padding: 12px 20px; border-radius: 12px; font-weight: 600; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; gap: 10px; cursor: pointer;" onclick="openFeedbackChat()">
+      <span>💬</span> Chat with Sales & PO (Feedback / Fixes)
+    </div>
+
+    <script>
+      function openFeedbackChat() {
+        window.open("https://t.me/", "_blank");
+      }
+    </script>
+    </body>
+    
+</html>

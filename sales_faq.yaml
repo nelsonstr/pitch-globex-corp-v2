@@ -1,0 +1,10 @@
+# Sales FAQ (simple key-value pairs)
+pricing:
+  - "We offer three pricing tiers: Starter ($5k), Professional ($15k), Enterprise ($30k+)."
+  - "All plans include unlimited deployments and 24/7 support."
+deployment_time:
+  - "Standard deployment takes < 24h after final approval."
+  - "With Hermes automation it can be as fast as a few minutes for a prototype."
+security:
+  - "All services run on Vercel's secure platform and are ISO‑27001 compliant."
+  - "We use HTTPS everywhere and JWT‑based authentication for APIs."

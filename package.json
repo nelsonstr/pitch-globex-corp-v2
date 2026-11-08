@@ -1,0 +1,12 @@
+{
+  "name": "sales-accelerator-demo",
+  "version": "1.0.0",
+  "description": "Sales pitch accelerator and live deployment demo app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
